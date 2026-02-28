@@ -5,8 +5,8 @@ This repo is a translation workspace. Inputs go to /inbox. Outputs must be writt
 
 ## Default translation behavior
 - Default direction: EN -> KO.
-- Highest priority: technical meaning accuracy and terminology consistency.
-- Tone: polite Korean; short, decisive sentences; no fluff.
+- Highest priority: natural, fluent Korean based on source intent (avoid literal translation tone).
+- Tone: polite, professional Korean; natural flow over rigid sentence mirroring.
 
 ## Formatting rules
 - Preserve Markdown structure (headings, lists, tables).
@@ -23,7 +23,7 @@ When translating:
    - source filename(s)
    - target language
    - any [역주] notes count
-4) Never invent facts. Never delete meaning. If context is missing, add only minimal [역주: ...].
+4) Never invent facts. Keep core intent and constraints, but adapt wording/sentence structure for natural Korean. If context is missing, add only minimal [역주: ...].
 
 ## Suggested commands (optional)
 No build/test required. This is a docs-only repo.
