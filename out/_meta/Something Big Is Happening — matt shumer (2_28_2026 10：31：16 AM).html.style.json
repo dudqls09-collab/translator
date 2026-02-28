@@ -1,15 +1,27 @@
 {
-  "genre": "개인 에세이/기술 전망 블로그",
-  "stance": "독자에게 호소",
+  "genre": "essay",
+  "stance": "addressing_reader",
   "default_register": "합니다체",
-  "pov": "저는",
+  "pov_base": "저는",
   "reader_address": "여러분",
-  "permitted_shifts": [
-    "강조 문장(<strong>)은 단정형/명령형으로 짧게 전환",
-    "인용문/수치 설명 단락은 객관 보고 톤 허용"
+  "permitted_shifts": {
+    "quote_blocks": true,
+    "emphasis_blocks": true,
+    "reader_address_blocks": true,
+    "scope": "paragraph_only"
+  },
+  "html_mode": true,
+  "html_scope": {
+    "translate_only_visible_text": true,
+    "include_tags": ["article"],
+    "include_selectors": ["p", "h1", "h2", "h3", "li", "blockquote"],
+    "exclude_selectors": ["head", "title", "meta", "script", "style", "pre", "code", ".sf-hidden", "nav", "footer", "form"]
+  },
+  "forbidden": [
+    "noun_only_sentences",
+    "random_register_mixing",
+    "html_tag_attr_changes",
+    "punctuation_spacing_loss"
   ],
-  "html_mode": {
-    "enabled": true,
-    "rules": "태그/속성/스크립트/스타일/URL은 보존하고 텍스트 노드만 번역"
-  }
+  "notes": "개인 에세이 톤을 유지하되 경고성 메시지는 단정적으로 전달."
 }
