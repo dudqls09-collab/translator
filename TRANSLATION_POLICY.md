@@ -1,34 +1,166 @@
-# Translation Policy
+# Translation Policy (Agent Guide v2.1)
 
-## Default direction
+## 0) 목적
+- 목표는 “번역문”이 아니라 **한국어로 처음부터 쓰인 글**처럼 읽히는 번역입니다.
+- 의미(사실/제약/의도)를 보존하되, 문장 구조·리듬·수사는 한국어 관습에 맞게 재작성합니다.
+- 문체는 고정값이 아니라 **문서 스타일 시트(Style Sheet)의 선택 결과**입니다.
+
+---
+
+## 1) 기본 방향
 - Source: English
 - Target: Korean
 
-## Priority (strict)
-1) Natural Korean readability and flow (highest)
-2) Technical meaning fidelity (preserve intent, not literal form)
-3) Terminology consistency (use glossary first)
+---
 
-### Interpretation rule
-- Translate for how a professional Korean translator would naturally write, not how a machine would map words one-to-one.
-- You may restructure sentence order, split/merge sentences, and localize expressions when needed for fluency.
-- Preserve the source intent, constraints, and key facts, but avoid awkward literal phrasing.
+## 2) 우선순위 (Strict)
+1) 자연스러운 한국어 가독성/리듬 (번역투 제거)
+2) 의미 충실도 (의도/제약/사실 보존)
+3) 용어 일관성 (글로서리 우선)
+4) 수사/톤 재현 (한국어식 등가치환)
 
-## Target reader / tone
-- Reader: non-expert who still wants precise technical meaning
-- Korean honorifics (존댓말)
-- Professional, publication-quality Korean (자연스럽고 매끄러운 문장)
-- Prefer clear, idiomatic Korean over literal translation style
-- Avoid mechanical translation artifacts (직역투, 어색한 연결어, 반복적 문장 패턴)
+### 2.1 충돌 해결
+- 가독성과 의미가 충돌하면: **의미를 보존한 채 문장을 바꿉니다.**
+- 용어가 어색하면: **문장을 바꿔 용어를 수용**합니다. (용어 억지 변경 금지)
+- 수사가 직역되어 어색하면: **효과(설득/경고/회고)를 기준으로 한국어식으로 등가치환**합니다.
 
-## Formatting / structure
-- Preserve Markdown structure, headings, lists, tables
-- Preserve links, filenames, inline code, and any quoted identifiers
-- Do not translate code blocks (``` ... ```)
-- Keep units, numbers, versions exactly as written
+---
 
-## Notes / translator’s notes
-- If context is missing, add minimal note in-line:
-  - [역주: ...]
-- Never add new facts.
-- Do not drop essential constraints or facts, but non-essential wording may be adapted for natural Korean.
+## 3) 작업 절차 (필수, 출력에는 과정 노출 금지)
+
+### Step 0. 문서 스타일 시트 생성 (Style Sheet)
+번역 전에 문서 전체에 대해 아래 항목을 **내부적으로 확정**합니다.
+
+- **Genre(장르/매체):** 칼럼/에세이/공지/보고서/매뉴얼/인터뷰/대화체 등  
+- **Stance(화자-독자 관계):** 독백 / 독자에게 호소 / 객관 보고  
+- **Default Register(기본 종결):** 한다체 / 합니다체 / 해요체  
+- **POV 기본:** 나는/저는/우리는 (문서 기본값)  
+- **Reader Address(독자 지칭):** 없음 / 독자 / 여러분 / 당신 (하나 선택)  
+- **Permitted Shifts(허용 전환):** 인용/대화/강조/호소 구간 등 전환 조건과 범위
+
+> 원칙: **문체는 “선택”이고, 혼용은 “통제된 전환”일 때만 허용합니다.**
+
+### Step 1. 단락 기능 맵핑 (Section Style Map)
+각 단락을 기능으로 분류합니다.
+- Hook/회고(도입)
+- 주장(Thesis)
+- 설명(Exposition)
+- 사례/서사(Story)
+- 경고/호소(Call-to-action)
+- 결론(Closing)
+
+그리고 단락 기능별로 톤을 조정합니다.
+- 도입: 장면/회고 리듬(과도한 정보 나열 금지)
+- 주장/경고: 단문·단호·명료
+- 설명: 과장 최소화, 논리/정보 전달 중심
+- 사례: 구체 묘사 허용, 그러나 문체는 스타일 시트 범위 내
+- 결론: 요약 + 여운(불필요한 수사 남발 금지)
+
+### Step 2. 1차 번역 (의미 보존)
+- 사실/수치/제약/범위를 정확히 옮깁니다.
+- 아직 딱딱해도 괜찮습니다.
+
+### Step 3. 2차 리라이트 (번역투 제거)
+- 5) 규칙을 적용해 “한국어 원고”로 다시 씁니다.
+
+### Step 4. 품질 게이트 통과 후 출력
+- 6) 게이트 중 하나라도 실패하면 재작성합니다.
+
+---
+
+## 4) 문체 운용 원칙 (고차원)
+
+### 4.1 기본값 vs 전환(Shifts)
+- 문서 전체에는 **기본 문체(기본 POV + 기본 종결)**가 있습니다.
+- 기본 문체에서 벗어나는 것은 원칙적으로 금지합니다.
+- 단, 아래 조건을 만족하면 “전환”을 허용합니다.
+
+#### 전환 허용 조건
+1) **직접 인용/대화**(따옴표 구간)  
+2) **수사적 강조**가 핵심인 구간(경고/단언/도치)  
+3) **독자 호소(you-address)**가 의미상 필수인 문장  
+4) 원문이 명확히 **문체 전환을 의도**(예: 갑자기 독자에게 말을 거는 구조)
+
+#### 전환 범위 원칙
+- 전환은 **문장 단위가 아니라 단락 단위(또는 최소 2~3문장 덩어리)**로 유지합니다.
+- 한 단락 안에서 `저는↔나는`, `합니다↔한다`가 문장마다 오락가락하면 **오류**로 판정합니다.
+- 전환 후에는 **원래 문체로 “복귀 지점”**을 명확히 둡니다. (표현상 자연스럽게)
+
+---
+
+## 5) 리라이트 규칙 (실패 패턴 기반)
+
+## 5.1 출력 파손/파편화 금지 (최우선)
+- **명사만 단독으로 남는 문장 금지.**
+  - (금지) `심판. 좋다 맛.`
+- “Like A. Like B.” 구조는 한국어에서 **서술문으로 통합**합니다.
+  - (권장) `A에 가까운, B 같은 감각이었습니다.`
+
+## 5.2 장문/나열 재구성
+- 한 문장에 나열이 3개 이상이면 **2문장 이상으로 분해**합니다.
+- 쉼표가 2개 이상이면 분해를 우선 검토합니다.
+- 영어식 종속절 중첩(…해서 …라서 …때문에)은 금지합니다.
+  - 기본: 결론 1문장 + 근거/조건 1문장
+
+## 5.3 한국어 어순/전개(결론 선제시)
+- 한국어는 **주제→요지→근거/조건** 순서가 기본입니다.
+- 단락 첫 문장에 핵심을 배치하고, 뒤에서 근거를 붙입니다.
+
+## 5.4 번역투 트리거 표현 제한
+- 아래 표현은 원문에 동일한 완곡/추정이 있을 때만 제한적으로 사용합니다.
+  - `~라고 할 수 있습니다`, `~처럼 들립니다`
+- 기본은 단정형/지시형/설명형으로 씁니다.
+  - `~입니다`, `~합니다`, `~하세요`, `~하면 됩니다`
+
+## 5.5 명사화/피동 최소화
+- `것/수/의`가 한 문장에 3회 이상이면 **분해 + 동사형 복원**합니다.
+- 주체가 명확하면 능동으로 씁니다.
+- 다만 정책/규정 문맥에서 피동이 자연스러우면 유지합니다.
+
+## 5.6 수사/비유의 등가치환 (직역 금지)
+- 수사는 단어가 아니라 **효과**를 번역합니다. (경고/긴박/회고/설득 등)
+- 직역이 어색하면 아래 우선순위로 처리합니다.
+  1) 한국어 관용/상투 수사로 치환
+  2) 비유 이미지는 유지하되 더 자연스러운 이미지로 재구성
+  3) 설명형으로 풀어쓰기(수사 효과가 크게 떨어지지 않을 때만)
+
+---
+
+## 6) 품질 게이트 (판정 → 조치)
+아래 중 하나라도 해당하면 **출력 금지, 재작성**합니다.
+
+### 6.1 안정성 게이트 (파손 방지)
+1) 단독 명사 문장 존재  
+→ 서술어 포함 문장으로 통합/재작성
+
+### 6.2 문체 게이트 (고차원)
+2) 문서 기본 문체가 있는데 문장마다 흔들림(무작위 혼용)  
+→ 스타일 시트 기본값으로 정리 + 전환은 단락 단위로 재설계  
+3) 전환이 발생했는데 “전환 이유/효과”가 독자에게 보이지 않음  
+→ 전환 제거 또는 전환 구간을 묶어 수사 효과가 나게 재작성
+
+### 6.3 가독성 게이트
+4) 한 문장에 나열 3개 이상 + 숨이 막힘  
+→ 분해 후 결론 선제시로 재조립  
+5) 문두 접속사(그리고/하지만/따라서)가 2문장 연속  
+→ 하나 제거 + 문장 구조로 연결
+
+### 6.4 번역투 게이트
+6) `~라고 할 수 있습니다/~처럼 들리다` 2회 이상(필요성 불명)  
+→ 단정형/자연 표현으로 교체  
+7) 비유가 직역되어 한국어 이미지가 안 섬  
+→ 5.6 규칙으로 등가치환
+
+### 6.5 의미 게이트
+8) 원문 제약/범위/책임 주체가 누락됨  
+→ 의미 복구 후 리라이트
+
+---
+
+## 7) 보존 규칙 (절대)
+- Markdown 구조(헤딩/리스트/표)
+- 링크, 파일명, 경로, 고유 식별자
+- 인라인 코드, 식별자
+- 단위, 숫자, 버전 표기(원문 그대로)
+- 따옴표로 감싼 텍스트(quoted identifiers)
+- 코드 블록은 번역하지 않음:  
