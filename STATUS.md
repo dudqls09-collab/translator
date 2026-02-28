@@ -1,46 +1,21 @@
-# Status Log
+# STATUS
 
-- (Add newest entries at the top)
+> 최신 기록이 맨 위로 오도록 추가하세요.
 
-
-- Date: 2026-02-28
-- Direction: EN -> KO
-- Inputs:
-  - inbox/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
-- Outputs:
-  - out/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
-- Notes:
-  - [역주] count: 0
-  - Terminology changes: 문체(귀하/당신→여러분), CTA 문구 자연화
-
-- Date: 2026-02-28
-- Direction: EN -> KO
-- Inputs:
-  - inbox/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
-- Outputs:
-  - out/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
-- Notes:
-  - [역주] count: 0
-  - Terminology changes: 워크플로, 리스트(문맥에 맞게 표현 통일)
-
-- Date: 2026-02-28
-- Direction: EN -> KO
-- Inputs:
-  - inbox/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
-- Outputs:
-  - out/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
-- Notes:
-  - [역주] count: 0
-  - Terminology changes: 없음
-
-
-## Template
-- Date: YYYY-MM-DD
-- Direction: EN -> KO
-- Inputs:
-  - inbox/...
-- Outputs:
-  - out/...
-- Notes:
-  - [역주] count: N
-  - Terminology changes: (if any)
+## YYYY-MM-DD
+- direction: EN -> KO
+- source: inbox/<filename>
+- output: out/<filename>
+- artifacts:
+  - out/_meta/<filename>.style.json
+  - out/_draft/<filename>.ko.draft
+  - out/_meta/<filename>.qa.md
+- style sheet summary:
+  - register:
+  - pov:
+  - reader_address:
+- QA result:
+  - hard_gates: pass/fail
+  - soft_score: NN/100
+- [역주] count: N
+- notes:
