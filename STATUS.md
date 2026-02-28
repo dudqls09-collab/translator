@@ -11,6 +11,16 @@
   - out/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
 - Notes:
   - [역주] count: 0
+  - Terminology changes: 워크플로, 리스트(문맥에 맞게 표현 통일)
+
+- Date: 2026-02-28
+- Direction: EN -> KO
+- Inputs:
+  - inbox/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
+- Outputs:
+  - out/Something Big Is Happening — matt shumer (2_28_2026 10：31：16 AM).html
+- Notes:
+  - [역주] count: 0
   - Terminology changes: 없음
 
 
