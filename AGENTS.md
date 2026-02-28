@@ -1,29 +1,47 @@
 # Codex Project Guidance (Translation Repo)
 
 ## What this repo is
-This repo is a translation workspace. Inputs go to /inbox. Outputs must be written to /out.
+This is a translation workspace.
+- Inputs: `/inbox`
+- Outputs: `/out`
+- This repo is **docs-only**. No build/test is required.
 
-## Default translation behavior
-- Default direction: EN -> KO.
-- Highest priority: natural, fluent Korean based on source intent (avoid literal translation tone).
-- Tone: polite, professional Korean; natural flow over rigid sentence mirroring.
+## Source of truth
+Always follow, in this order:
+1) `TRANSLATION_POLICY.md`
+2) `glossary/GLOSSARY.md`
+3) `prompts/*` templates (task execution protocol)
 
-## Formatting rules
-- Preserve Markdown structure (headings, lists, tables).
-- Preserve links and inline code exactly.
-- Do NOT translate code blocks (``` ... ```).
-- Keep product names, API names, CLI commands as-is unless a standard Korean term exists.
+## Translation execution protocol (mandatory)
+Every translation job must run as a **4-pass pipeline** and produce artifacts.
+
+### Pass 0 — Style Sheet (internal planning, saved as file)
+- Create a style sheet for each input file.
+- Save to: `out/_meta/<same-filename>.style.json`
+
+### Pass 1 — Draft translation (meaning-first)
+- Produce a faithful draft translation.
+- Save to: `out/_draft/<same-filename>.ko.draft`
+
+### Pass 2 — Rewrite (publishable Korean)
+- Rewrite the draft into natural, publication-quality Korean.
+- Save final to: `out/<same-filename>`
+
+### Pass 3 — QA Gate (hard gate + fixes)
+- Run QA checks described in `TRANSLATION_POLICY.md`.
+- Save QA log to: `out/_meta/<same-filename>.qa.md`
+- If any hard gate fails: revise (redo Pass 2) and re-run QA (up to 2 iterations).
 
 ## Output contract (must follow every task)
-When translating:
-1) Read TRANSLATION_POLICY.md and glossary/GLOSSARY.md first.
-2) Translate each input file from /inbox to a matching output file in /out.
-3) Append a log entry to STATUS.md with:
-   - date
-   - source filename(s)
-   - target language
-   - any [역주] notes count
-4) Never invent facts. Keep core intent and constraints, but adapt wording/sentence structure for natural Korean. If context is missing, add only minimal [역주: ...].
+For each translated file:
+- `out/<same-filename>` (final)
+- `out/_draft/<same-filename>.ko.draft` (draft)
+- `out/_meta/<same-filename>.style.json` (style sheet)
+- `out/_meta/<same-filename>.qa.md` (QA log)
+- Update `STATUS.md` (newest entry at the top)
 
-## Suggested commands (optional)
-No build/test required. This is a docs-only repo.
+## Non-negotiables
+- Never invent facts.
+- Preserve: numbers, units, dates, versions, code blocks, identifiers.
+- For HTML: preserve tags/attributes/scripts/styles. Translate text nodes only.
+- If context is missing, add minimal `[역주: ...]` only when essential.
